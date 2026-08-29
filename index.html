@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,169 +10,556 @@
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial, sans-serif;
-background:#f4f7fa;
-color:#333;
+    font-family:Arial, sans-serif;
+    background:#f4f7fa;
+    color:#333;
+    line-height:1.6;
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
-background:#003366;
-padding:15px;
-position:sticky;
-top:0;
-z-index:1000;
+    height:72px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
+
+/* R LOGO */
+
+.logo{
+    font-family:Georgia, serif;
+    font-size:44px;
+    font-weight:normal;
+    color:#222;
+    text-decoration:none;
+    line-height:1;
+}
+
+
+/* MENU */
+
 nav ul{
-display:flex;
-justify-content:center;
-list-style:none;
+    display:flex;
+    align-items:center;
+    list-style:none;
+    gap:38px;
 }
 
 nav ul li{
-margin:0 20px;
+    margin:0;
 }
 
 nav ul li a{
-color:white;
-text-decoration:none;
-font-weight:bold;
+    position:relative;
+    color:#777;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    padding:25px 0;
+    transition:0.3s;
 }
 
-.hero{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,0.6),
-rgba(0,0,0,0.6)),
-url('Simulation-chamber.jpg');
 
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
+/* HOVER */
+
+nav ul li a:hover{
+    color:#222;
+}
+
+
+/* ACTIVE / UNDERLINE */
+
+nav ul li a.active{
+    color:#222;
+}
+
+nav ul li a.active::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:12px;
+    height:3px;
+    background:#20b2aa;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:calc(100vh - 72px);
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.48),
+        rgba(0,0,0,0.48)
+    ),
+    url('Simulation-chamber.jpg');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .hero-content{
-display:flex;
-align-items:center;
-justify-content:space-between;
-max-width:1200px;
-width:90%;
-color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    max-width:1200px;
+    width:90%;
+
+    color:white;
 }
 
 .hero-text{
-width:60%;
+    width:60%;
 }
 
 .hero-text h1{
-font-size:65px;
-margin-bottom:20px;
+    font-size:65px;
+    margin-bottom:18px;
 }
 
 .hero-text h2{
-font-size:32px;
-color:#7fffd4;
-margin-bottom:20px;
+    font-size:34px;
+    color:#7fffd4;
+    margin-bottom:22px;
 }
 
 .hero-text p{
-font-size:22px;
-line-height:1.8;
+    font-size:21px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+
+/* HERO PHOTO */
+
+.hero-photo{
+    width:35%;
+    text-align:center;
 }
 
 .hero-photo img{
-width:350px;
-border-radius:12px;
-border:5px solid white;
-box-shadow:0 0 20px rgba(255,255,255,0.4);
+    width:350px;
+    max-width:100%;
+
+    border-radius:14px;
+    border:5px solid white;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.35);
 }
 
+
+/* HERO BUTTONS */
+
+.hero-buttons{
+    margin-top:30px;
+}
+
+.hero-button{
+    display:inline-block;
+
+    padding:13px 28px;
+    margin-right:12px;
+
+    border-radius:5px;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.hero-button.primary{
+    background:#20aaa3;
+    color:white;
+}
+
+.hero-button.secondary{
+    background:white;
+    color:#003366;
+}
+
+.hero-button:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
 section{
-padding:80px 10%;
+    padding:90px 10%;
+    scroll-margin-top:72px;
+}
+
+section:nth-child(even){
+    background:white;
 }
 
 h3{
-font-size:36px;
-margin-bottom:25px;
-color:#003366;
+    font-size:38px;
+    margin-bottom:30px;
+    color:#003366;
 }
+
+
+/* SECTION TITLE LINE */
+
+.section-line{
+    width:55px;
+    height:3px;
+    background:#20b2aa;
+    margin-top:-18px;
+    margin-bottom:30px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
 
 .card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    background:white;
+    padding:35px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 3px 15px rgba(0,0,0,0.08);
 }
 
-ul{
-padding-left:20px;
+.card p{
+    font-size:18px;
+    line-height:1.9;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
+
+/* =========================
+   RESEARCH
+========================= */
+
+.research-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
 }
 
-.gallery img{
-width:100%;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.15);
+.research-card{
+    background:white;
+
+    padding:28px;
+
+    border-radius:10px;
+
+    border-top:4px solid #20b2aa;
+
+    box-shadow:
+    0 3px 12px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+}
+
+.research-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.12);
+}
+
+.research-card h4{
+    color:#003366;
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.research-card p{
+    color:#666;
+}
+
+
+/* =========================
+   PUBLICATIONS
+========================= */
+
+.publication{
+    background:white;
+
+    padding:25px 30px;
+
+    margin-bottom:18px;
+
+    border-left:4px solid #20b2aa;
+
+    box-shadow:
+    0 3px 12px rgba(0,0,0,0.07);
+}
+
+.publication h4{
+    color:#003366;
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.publication p{
+    color:#555;
+}
+
+
+/* =========================
+   CV
+========================= */
+
+.cv-box{
+    text-align:center;
 }
 
 .button{
-display:inline-block;
-background:#003366;
-color:white;
-padding:12px 25px;
-text-decoration:none;
-border-radius:5px;
-margin-top:15px;
+    display:inline-block;
+
+    background:#003366;
+
+    color:white;
+
+    padding:13px 28px;
+
+    text-decoration:none;
+
+    border-radius:5px;
+
+    margin-top:20px;
+
+    font-weight:bold;
+
+    transition:0.3s;
 }
 
+.button:hover{
+    background:#20aaa3;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+}
+
+.contact-card{
+    background:white;
+
+    padding:30px;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 3px 12px rgba(0,0,0,0.08);
+}
+
+.contact-card h4{
+    color:#003366;
+    font-size:21px;
+    margin-bottom:10px;
+}
+
+.contact-card a{
+    color:#168f8a;
+    text-decoration:none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
-background:#003366;
-color:white;
-text-align:center;
-padding:25px;
+    background:#003366;
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    nav{
+        height:auto;
+        padding:18px 20px;
+
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        gap:18px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    nav ul li a{
+        font-size:15px;
+        padding:8px 0;
+    }
+
+    nav ul li a.active::after{
+        bottom:0;
+    }
+
+    .hero{
+        min-height:100vh;
+    }
+
+    .hero-content{
+        flex-direction:column-reverse;
+        text-align:center;
+        gap:35px;
+    }
+
+    .hero-text{
+        width:100%;
+    }
+
+    .hero-text h1{
+        font-size:45px;
+    }
+
+    .hero-text h2{
+        font-size:27px;
+    }
+
+    .hero-text p{
+        font-size:18px;
+    }
+
+    .hero-photo{
+        width:60%;
+    }
+
+    section{
+        padding:65px 7%;
+    }
+
+    h3{
+        font-size:32px;
+    }
+
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
 
+<a href="#home" class="logo">R</a>
+
 <ul>
-<li><a href="#about">About</a></li>
-<li><a href="#research">Research</a></li>
-<li><a href="publications.html">Publications</a></li>
-<li><a href="cv.html">CV</a></li>
-<li><a href="contact.html">Contact</a></li>
+
+<li>
+<a href="#home" class="active">Home</a>
+</li>
+
+<li>
+<a href="#about">About</a>
+</li>
+
+<li>
+<a href="#research">Research</a>
+</li>
+
+<li>
+<a href="#publications">Publications</a>
+</li>
+
+<li>
+<a href="#cv">CV</a>
+</li>
+
+<li>
+<a href="#contact">Contact</a>
+</li>
+
 </ul>
 
 </nav>
 
-<div class="hero">
+
+<!-- =========================
+     HOME
+========================= -->
+
+<div class="hero" id="home">
 
 <div class="hero-content">
 
+
 <div class="hero-text">
 
-<h1>Dr. Ravi Yadav</h1>
+<h1>
+Dr. Ravi Yadav
+</h1>
 
 <h2>
-Atmospheric Physicist 
+Atmospheric Physicist
 </h2>
 
 <p>
@@ -180,95 +568,392 @@ air quality, and climate change
 to support a more sustainable future.
 </p>
 
+
+<div class="hero-buttons">
+
+<a href="#about" class="hero-button primary">
+About Me
+</a>
+
+<a href="#research" class="hero-button secondary">
+My Research
+</a>
+
 </div>
+
+</div>
+
 
 <div class="hero-photo">
 
-<img src="ravi.jpeg" alt="Ravi Yadav">
+<img
+src="ravi.jpeg"
+alt="Dr. Ravi Yadav"
+>
+
+</div>
+
 
 </div>
 
 </div>
 
-</div>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
-<h3>About Me</h3>
+<h3>
+About Me
+</h3>
+
+<div class="section-line"></div>
 
 <div class="card">
 
 <p>
 
-I am an Atmospheric Physicist 
-working on atmospheric chemistry, air quality,
+I am an Atmospheric Physicist working on
+atmospheric chemistry, air quality,
 climate interactions, VOC oxidation processes,
 secondary organic aerosol formation,
 and atmospheric simulation chamber studies.
 
+<br><br>
+
 My research combines laboratory experiments,
 simulation chamber studies,
 advanced analytical instrumentation,
-and field observations to understand atmospheric
-processes affecting air quality and climate.
+and field observations to understand
+atmospheric processes affecting air quality
+and climate.
 
 </p>
 
 </div>
 
 </section>
+
+
+
+<!-- =========================
+     RESEARCH
+========================= -->
 
 <section id="research">
 
-<h3>Research Interests</h3>
+<h3>
+Research
+</h3>
 
-<div class="card">
+<div class="section-line"></div>
 
-<ul>
 
-<li>Atmospheric Chemistry</li>
+<div class="research-grid">
 
-<li>Air Pollution & Air Quality</li>
 
-<li>Volatile Organic Compounds (VOCs)</li>
+<div class="research-card">
 
-<li>Secondary Organic Aerosol Formation</li>
+<h4>
+Atmospheric Chemistry
+</h4>
 
-<li>Photochemical Processes</li>
+<p>
+Understanding chemical processes
+that control the composition and
+transformation of the atmosphere.
+</p>
 
-<li>Climate–Atmosphere Interactions</li>
+</div>
 
-<li>Atmospheric Simulation Chambers</li>
 
-</ul>
+<div class="research-card">
+
+<h4>
+Air Quality
+</h4>
+
+<p>
+Investigating atmospheric pollutants
+and their impacts on urban and
+regional air quality.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h4>
+Volatile Organic Compounds
+</h4>
+
+<p>
+Studying VOC sources, oxidation,
+chemical transformation and their
+atmospheric impacts.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h4>
+Secondary Organic Aerosol
+</h4>
+
+<p>
+Investigating SOA formation and
+the atmospheric processing of
+organic compounds.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h4>
+Photochemical Processes
+</h4>
+
+<p>
+Understanding sunlight-driven
+chemical reactions in the atmosphere.
+</p>
+
+</div>
+
+
+<div class="research-card">
+
+<h4>
+Atmospheric Simulation Chambers
+</h4>
+
+<p>
+Using controlled laboratory experiments
+to investigate atmospheric oxidation
+and aerosol formation.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
 
-<section>
 
-<h3>Curriculum Vitae</h3>
 
-<div class="card">
+<!-- =========================
+     PUBLICATIONS
+========================= -->
+
+<section id="publications">
+
+<h3>
+Publications
+</h3>
+
+<div class="section-line"></div>
+
+
+<div class="publication">
+
+<h4>
+Research Publications
+</h4>
 
 <p>
-Download my complete CV.
+A complete list of peer-reviewed
+research publications, including studies
+on atmospheric chemistry, VOCs,
+aerosol formation and air quality.
 </p>
 
-<a href="CV_RaviYadav-26032026.pdf" class="button">
+<a href="publications.html" class="button">
+View Publications
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =========================
+     CV
+========================= -->
+
+<section id="cv">
+
+<h3>
+Curriculum Vitae
+</h3>
+
+<div class="section-line"></div>
+
+
+<div class="card cv-box">
+
+<p>
+Download my complete academic CV
+for information about my education,
+research experience, publications
+and professional activities.
+</p>
+
+
+<a
+href="CV_RaviYadav-26032026.pdf"
+class="button"
+target="_blank"
+>
+
 Download CV
+
 </a>
 
 </div>
 
 </section>
 
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<h3>
+Contact
+</h3>
+
+<div class="section-line"></div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card">
+
+<h4>
+Email
+</h4>
+
+<p>
+<a href="mailto:your-email@example.com">
+your-email@example.com
+</a>
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h4>
+Research
+</h4>
+
+<p>
+Atmospheric Chemistry<br>
+Air Quality<br>
+VOC & Aerosol Processes
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<h4>
+Academic Profile
+</h4>
+
+<p>
+Researcher profile and
+publication information.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-© 2025 Dr. Ravi Yadav
+© 2026 Dr. Ravi Yadav
 
 </footer>
+
+
+
+<!-- =========================
+     NAVIGATION ACTIVE SCRIPT
+========================= -->
+
+<script>
+
+const sections =
+document.querySelectorAll("section, .hero");
+
+const navLinks =
+document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop =
+section.offsetTop - 120;
+
+const sectionHeight =
+section.clientHeight;
+
+if(
+pageYOffset >= sectionTop &&
+pageYOffset < sectionTop + sectionHeight
+){
+current = section.getAttribute("id");
+}
+
+});
+
+
+navLinks.forEach(link => {
+
+link.classList.remove("active");
+
+if(
+link.getAttribute("href") === "#" + current
+){
+link.classList.add("active");
+}
+
+});
+
+});
+
+</script>
+
 
 </body>
 
